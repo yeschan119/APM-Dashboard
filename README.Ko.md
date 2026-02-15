@@ -1,4 +1,4 @@
-# OpenTelemetry 기반 관측 플랫폼
+# dotNet 시스템 관측 플랫폼
 ### .NET 기반 커스텀 APM & 분산 트레이싱 워크벤치
 
 OpenTelemetry SDK를 활용하여
