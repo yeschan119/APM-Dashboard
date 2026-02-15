@@ -28,8 +28,6 @@ exported via a custom exporter, and stored in DynamoDB.
 ---
 
 ## 🏗 Architecture Overview
-
-# Angular Dashboard & Trace Tree UI
 ---
 
 ## 🔍 Execution Flow
