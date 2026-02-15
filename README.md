@@ -1,39 +1,53 @@
 # Distributed-Trace-Workbench
-Real-Time User Activity &amp; Distributed Performance Monitoring
+### Real-Time User Activity & Distributed Performance Monitoring
 
 [한국어 🇰🇷](README.Ko.md)
 
-Built a full-stack observability platform using .NET OpenTelemetry SDK to:
+Distributed-Trace-Workbench is a custom observability platform built using the .NET OpenTelemetry SDK.
 
-- Capture real-time user activity logs
-- Collect distributed performance traces
-- Store structured trace data in DynamoDB
-- Visualize system performance in a custom Workbench dashboard (Datadog-style)
+It unifies real-time user activity logging and distributed performance tracing into a single telemetry pipeline. The system instruments ASP.NET Core applications, generates hierarchical spans (Controller → API → SQL), exports structured trace data via a custom exporter, and persists it in DynamoDB.
 
-This project combines user activity tracking and performance tracing into a unified observability system.
+The platform provides an Angular-based Workbench dashboard for activity tracking, performance benchmarking, and trace visualization — functioning as an internal APM alternative.
 
 ---
 
 ## 📌 Project Overview
 
-This system captures:
+This system captures and models:
 
-1. User Activity Logs (CRUD actions)
+1. User Activity Logs (CRUD operations)
 2. System Performance Traces (Controller → API → SQL)
-3. Distributed Trace Tree (Parent/Child Span relationships)
+3. Distributed Trace Trees (Parent / Child Span relationships)
 
-All telemetry data is instrumented using OpenTelemetry in ASP.NET Core,
-exported via a custom exporter, and stored in DynamoDB.
+All telemetry is instrumented via OpenTelemetry in ASP.NET Core, processed through a custom exporter, and stored in DynamoDB using a TraceId/SpanId data model.
 
 ---
 
 ## 🏗 Architecture Overview
+
+Client (Angular Workbench UI)  
+        │  
+        ▼  
+ASP.NET Core API (OpenTelemetry Instrumented)  
+        │  
+        ▼  
+Custom Workbench Exporter  
+        │  
+        ▼  
+DynamoDB (Trace Storage)  
+        │  
+        ▼  
+ASP.NET Core Read API  
+        │  
+        ▼  
+Angular Dashboard & Trace Tree UI  
+
 ---
 
 ## 🔍 Execution Flow
 
 ### 1️⃣ Incoming HTTP Request
-- ASP.NET Core Controller receives request
+- ASP.NET Core Controller receives request.
 
 ### 2️⃣ OpenTelemetry Instrumentation
 - AspNetCore → Server Span
@@ -42,11 +56,11 @@ exported via a custom exporter, and stored in DynamoDB.
 
 ### 3️⃣ Distributed Trace Creation
 - TraceId / SpanId generated
-- Parent / Child Span tree constructed
+- Parent / Child span hierarchy constructed
 
 ### 4️⃣ Custom Exporter
-- WorkbenchLambdaExporter converts Span → JSON
-- Batched export to DynamoDB
+- Span converted into structured JSON
+- Batch export to DynamoDB
 
 ### 5️⃣ DynamoDB Storage
 - PK: TraceId
@@ -56,7 +70,7 @@ exported via a custom exporter, and stored in DynamoDB.
 
 ---
 
-## 🗄 DynamoDB Schema
+## 🗄 DynamoDB Data Model
 
 | Field | Description |
 |--------|-------------|
@@ -71,68 +85,56 @@ exported via a custom exporter, and stored in DynamoDB.
 | ParentSpanId | Span Hierarchy |
 | ExpireAt | TTL (7 Days) |
 
+The TraceId/SpanId structure enables full reconstruction of distributed span trees.
+
 ---
 
 ## 📊 Workbench Features
 
 ### 🧾 Activity Log Dashboard
 - User information
-- CRUD action logs
-- Timestamp tracking
+- CRUD activity tracking
+- Timestamp-based filtering
 
 ### 📈 Benchmark Dashboard
 - Top 10 Slowest Controllers
 - Top 10 Fastest Controllers
 - Top 10 APIs
 - Top 10 SQL Queries
-- ...
 
 ### 🌳 Distributed Trace Tree
-Visualize:
+Visual representation of span hierarchy:
 
-Controller
-  └── API
-        └── SQL
+Controller  
+  └── API  
+        └── SQL  
 
-Parent-child span hierarchy using TraceId.
+TraceId-based tree reconstruction using ParentSpanId relationships.
 
 ### 🧠 SQL Modal
-- Pretty formatted SQL
+- Pretty-formatted SQL
 - Copy-to-clipboard support
+- Execution time display
 
 ---
 
 ## ⚙️ Technical Highlights
 
 ### Unified Observability Model
-User activity and performance tracing handled using a single OpenTelemetry pipeline.
+User activity logging and performance tracing handled through a single OpenTelemetry pipeline.
 
 ### Custom OpenTelemetry Exporter
-Implemented custom exporter to:
-- Convert spans into structured JSON
-- Batch write to DynamoDB
-- Support TTL-based auto expiration
+- Converts spans into structured JSON
+- Batch writes to DynamoDB
+- Supports TTL-based automatic expiration
 
 ### Distributed Trace Modeling
-Stored span tree using:
 - PK = TraceId
 - SK = SpanId
-- ParentSpanId for hierarchy reconstruction
+- ParentSpanId for hierarchical reconstruction
 
-### Real-Time Performance Benchmarking
-Aggregated trace data to generate Top10 fastest/slowest endpoints.
-
----
-
-## 🚀 Why This Matters
-
-Instead of using Datadog or external APM tools, this project:
-
-- Implements a custom observability system
-- Stores trace data in DynamoDB
-- Provides a fully customized monitoring dashboard
-- Enables cost-efficient internal monitoring
-- Demonstrates deep understanding of OpenTelemetry and distributed tracing
+### Internal APM Design
+Designed as a lightweight internal observability system without relying on external SaaS monitoring tools.
 
 ---
 
@@ -141,7 +143,7 @@ Instead of using Datadog or external APM tools, this project:
 Backend:
 - ASP.NET Core
 - .NET OpenTelemetry SDK
-- Custom Exporter
+- Custom Span Exporter
 
 Frontend:
 - Angular
@@ -156,12 +158,10 @@ Cloud:
 
 ---
 
-## 🎯 Resume Summary
+## 📌 Project Summary
 
-Built a custom observability platform using .NET OpenTelemetry SDK.
+Distributed-Trace-Workbench is a full-stack observability system that captures, models, stores, and visualizes distributed traces using .NET OpenTelemetry and DynamoDB.
 
-- Captured real-time user activity and distributed performance traces
-- Implemented custom span exporter to DynamoDB
-- Designed trace tree reconstruction model
-- Developed Angular Workbench dashboard with Top10 benchmarking
-- Created internal Datadog-style monitoring system
+It integrates user activity logging and performance monitoring into a unified trace model, reconstructs span hierarchies via TraceId/SpanId relationships, and exposes analytical dashboards for benchmarking and trace inspection.
+
+The project demonstrates practical implementation of distributed tracing, custom telemetry exporting, DynamoDB-based trace persistence, and internal APM system design without third-party monitoring platforms.
