@@ -11,7 +11,7 @@ This system functions as a lightweight internal alternative to external APM tool
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 The APM Dashboard captures and models:
 
@@ -24,7 +24,7 @@ All telemetry data is instrumented via OpenTelemetry in ASP.NET Core, processed 
 
 ---
 
-## 🏗 Architecture Overview
+## Architecture Overview
 
 Client (Angular APM Dashboard)  
         │  
@@ -45,7 +45,7 @@ Angular Dashboard (APM Console)
 
 ---
 
-## 🔍 Execution Flow
+## Execution Flow
 
 ### 1️⃣ HTTP Request Instrumentation
 - ASP.NET Core Controller receives request.
@@ -70,7 +70,7 @@ Angular Dashboard (APM Console)
 
 ---
 
-## 🗄 DynamoDB Data Model
+## DynamoDB Data Model
 
 | Field | Description |
 |--------|-------------|
@@ -89,7 +89,7 @@ The TraceId/SpanId schema enables full reconstruction of distributed trace trees
 
 ---
 
-## 📊 APM Dashboard Features
+## APM Dashboard Features
 
 ### 📈 Performance Benchmarking
 - Top 10 Slowest Controllers
@@ -98,7 +98,7 @@ The TraceId/SpanId schema enables full reconstruction of distributed trace trees
 - Top 10 SQL Queries
 - Execution time ranking
 
-### 🌳 Distributed Trace Viewer
+### Distributed Trace Viewer
 Hierarchical visualization:
 
 Controller  
@@ -107,12 +107,12 @@ Controller
 
 TraceId-based span reconstruction using ParentSpanId relationships.
 
-### 🧾 User Activity Monitoring
+### User Activity Monitoring
 - CRUD action tracking
 - User-based filtering
 - Timestamp-based inspection
 
-### 🧠 SQL Inspection Panel
+### SQL Inspection Panel
 - Pretty-formatted SQL
 - Execution time display
 - Copy-to-clipboard support
@@ -159,7 +159,7 @@ Cloud:
 
 ---
 
-## 📌 Project Summary
+## Project Summary
 
 APM-Dashboard is an internal Application Performance Monitoring system that captures, models, stores, and visualizes distributed traces using .NET OpenTelemetry and DynamoDB.
 
