@@ -28,23 +28,8 @@ TraceId / SpanId 기반 데이터 모델로 DynamoDB에 저장됩니다.
 ---
 
 ## 아키텍처 개요
-
-Client (Angular APM Dashboard)  
-        │  
-        ▼  
-ASP.NET Core API (OpenTelemetry 계측)  
-        │  
-        ▼  
-Custom Telemetry Exporter  
-        │  
-        ▼  
-DynamoDB (Trace 저장)  
-        │  
-        ▼  
-ASP.NET Core Read API  
-        │  
-        ▼  
-Angular APM Console  
+ 
+<img width="1881" height="582" alt="apm" src="https://github.com/user-attachments/assets/6c678da3-4a99-4916-ad74-b407c88e3726" />
 
 ---
 
