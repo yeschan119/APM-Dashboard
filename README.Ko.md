@@ -13,7 +13,7 @@ Angular 기반 APM 대시보드를 통해 성능 벤치마킹, 트레이스 분�
 
 ---
 
-## 📌 프로젝트 개요
+## 프로젝트 개요
 
 본 시스템은 다음을 수집하고 모델링합니다:
 
@@ -27,7 +27,7 @@ TraceId / SpanId 기반 데이터 모델로 DynamoDB에 저장됩니다.
 
 ---
 
-## 🏗 아키텍처 개요
+## 아키텍처 개요
 
 Client (Angular APM Dashboard)  
         │  
@@ -48,7 +48,7 @@ Angular APM Console
 
 ---
 
-## 🔍 실행 흐름
+## 실행 흐름
 
 ### 1️⃣ HTTP 요청 계측
 - ASP.NET Core Controller 진입
@@ -73,7 +73,7 @@ Angular APM Console
 
 ---
 
-## 🗄 DynamoDB 데이터 모델
+## DynamoDB 데이터 모델
 
 | 필드 | 설명 |
 |------|------|
@@ -92,7 +92,7 @@ TraceId / SpanId 구조를 통해 전체 분산 트레이스 트리를 재구성
 
 ---
 
-## 📊 APM 대시보드 주요 기능
+## APM 대시보드 주요 기능
 
 ### 📈 성능 벤치마킹
 - Top 10 느린 Controller
@@ -101,7 +101,7 @@ TraceId / SpanId 구조를 통해 전체 분산 트레이스 트리를 재구성
 - Top 10 SQL
 - 실행 시간 기반 순위 분석
 
-### 🌳 분산 트레이스 뷰어
+### 분산 트레이스 뷰어
 Span 계층 구조 시각화:
 
 Controller  
@@ -110,12 +110,12 @@ Controller
 
 ParentSpanId 기반 TraceId 단위 트리 재구성
 
-### 🧾 사용자 활동 모니터링
+### 사용자 활동 모니터링
 - CRUD 작업 추적
 - 사용자 기준 필터링
 - 시간 기반 조회
 
-### 🧠 SQL 분석 패널
+### SQL 분석 패널
 - SQL Pretty Format
 - 실행 시간 표시
 - Copy 버튼 제공
@@ -162,7 +162,7 @@ Cloud:
 
 ---
 
-## 📌 프로젝트 요약
+## 프로젝트 요약
 
 APM-Dashboard는 .NET OpenTelemetry와 DynamoDB를 기반으로  
 분산 트레이스를 수집·모델링·저장·시각화하는 내부 애플리케이션 성능 모니터링 시스템입니다.
