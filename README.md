@@ -148,8 +148,6 @@ The dashboard collects infrastructure-level performance metrics such as CPU usag
 
 This allows correlation between application latency and underlying infrastructure behavior.
 
----
-
 ### Optimized Batch Telemetry Persistence
 
 To improve write performance and reduce DynamoDB overhead, telemetry data is persisted using a hybrid batch strategy:
