@@ -1,7 +1,7 @@
 # APM-Dashboard
 ### 내부 애플리케이션 성능 모니터링(APM) 플랫폼
 
-[English 🇺🇸](README.md)
+[ENGLISH 🇬🇧](README.en.md)
 
 APM-Dashboard는 .NET OpenTelemetry SDK를 기반으로 구축한 내부 애플리케이션 성능 모니터링(Application Performance Monitoring) 시스템입니다.
 
